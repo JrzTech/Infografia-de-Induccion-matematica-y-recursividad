@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Infografía: Inducción y Recursividad</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Source+Code+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--ink:#2b2018;--paper:#fcfaf4;--cream:#f2ecdf;--brown:#6b3a22;--mute:#766352;--mid:#b9a28c;--blue:#2e4a6b;--blue-t:#e6ecf2;--green:#4a6741;--green-t:#e9eee0;--brick:#9a4a2e;--line:rgba(107,58,34,.22);--grid:rgba(46,74,107,.07);--bk:#e4dccb;--sh:rgba(60,40,20,.16);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bk);color:var(--ink);font:15px/1.65 "Source Code Pro",ui-monospace,Menlo,Consolas,monospace;padding:28px 12px 40px}
+.sheet{max-width:860px;margin:0 auto;border:1px solid var(--line);border-radius:6px;padding:40px 40px 34px;background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:48px 48px;box-shadow:0 10px 32px var(--sh)}
+header{text-align:center;padding-bottom:20px;border-bottom:2px solid var(--brown);position:relative;margin-bottom:6px}
+header::after{content:"";position:absolute;left:20%;right:20%;bottom:-6px;height:1px;background:var(--brown);opacity:.45}
+.sy{font-size:13px;letter-spacing:14px;color:var(--blue);opacity:.55;margin-bottom:12px}
+h1{font:400 clamp(34px,8vw,58px)/1.1 "IM Fell English SC",Georgia,serif;color:var(--brown);letter-spacing:1.5px}
+.st{margin-top:12px;font-size:13px;letter-spacing:4px;text-transform:uppercase;color:var(--blue)}
+.in{margin:16px auto 0;max-width:620px;font-size:14.5px}
+section{padding:28px 0 26px;border-bottom:1px solid var(--line)}
+.top{display:flex;gap:18px;align-items:center}
+.top.r{flex-direction:row-reverse}
+.tx{flex:1;min-width:0}
+.top.r .tx h2,.top.r .tx .sb,.top.r .tx p,.top.r .lb{text-align:right}
+h2{font:400 27px/1.25 "IM Fell English SC",Georgia,serif;color:var(--brown)}
+.sb{display:block;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--mute);margin:2px 0 8px}
+.lb{display:block;margin:12px 0 4px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--mute)}
+.lb.d,.lb.f{color:var(--blue)}
+.lb.c{color:var(--brown)}
+.lb.e{color:var(--green)}
+.n{color:var(--brick);margin-right:2px}
+ul{list-style:none}
+li{margin:2px 0}
+.top li::before{content:"▸ ";color:var(--mute)}
+.top.r li{text-align:right}
+.top.r li::before{content:""}
+.top.r li::after{content:" ◂";color:var(--mute)}
+.il{flex:0 0 170px;align-self:stretch;display:grid;place-items:center;border-left:1px solid var(--line);padding-left:14px}
+.top.r .il{border-left:0;border-right:1px solid var(--line);padding:0 14px 0 0}
+.il svg{width:100%;height:auto;max-width:150px}
+.fm{margin-top:16px;background:var(--blue-t);border:1px solid rgba(46,74,107,.25);border-left:4px solid var(--blue);padding:10px 14px;font:italic 18px Georgia,"Times New Roman",serif;text-align:center;color:var(--blue)}
+.ex{margin-top:12px;background:var(--green-t);border-radius:3px;padding:14px 18px}
+.ex b{display:block;font-weight:600;margin-bottom:6px}
+.ex ol{counter-reset:s}
+.ex li{counter-increment:s;position:relative;padding-left:34px;margin:5px 0}
+.ex li::before{content:counter(s);position:absolute;left:0;top:2px;width:23px;height:23px;border-radius:50%;background:var(--green);color:var(--paper);font-size:12.5px;font-weight:600;display:grid;place-items:center}
+.cn{margin-top:12px;font-size:14.5px}
+.cn b{color:var(--brown)}
+.cn::before{content:"★ ";color:var(--brick)}
+.ref{padding:18px 0 4px}
+.ref h3,.dt h3{font:400 23px "IM Fell English SC",Georgia,serif;color:var(--brown);margin-bottom:6px}
+.ref li{font-size:14px}
+.dt{margin-top:18px;padding:18px 22px;background:var(--blue);color:var(--paper);border-radius:3px}
+.dt h3{color:var(--paper);letter-spacing:2px}
+.dt p{margin:2px 0}
+@media (max-width:560px){body{font-size:14px}.sheet{padding:24px 16px}h2{font-size:23px}.il{flex-basis:100px;padding-left:10px}.top.r .il{padding-right:10px}}
+</style>
+</head>
+<body>
+<main class="sheet">
+<header>
+<div class="sy">Σ ∫ ∂ π ∞ √ Δ ≈</div>
+<h1>Inducción y Recursividad</h1>
+<div class="st">Matemáticas Discretas</div>
+<p class="in">Ambas ideas parten de lo mismo: un caso base y un paso que lleva de n − 1 a n. Aquí tienes 10 temas clave para dominarlas.</p>
+</header>
+<div id="g"></div>
+<div class="ref">
+<h3>Referencias</h3>
+<ul>
+<li>▸ Rosen, K. H. <i>Matemática discreta y sus aplicaciones.</i> McGraw-Hill.</li>
+<li>▸ Johnsonbaugh, R. <i>Matemáticas discretas.</i> Pearson.</li>
+<li>▸ Grimaldi, R. P. <i>Matemáticas discretas y combinatoria.</i> Pearson.</li>
+</ul>
+</div>
+<div class="dt">
+<h3>Datos del alumno</h3>
+<p><b>Nombre:</b> Juan Ramón Rodríguez Chávez</p>
+<p><b>Materia:</b> Matemáticas Discretas</p>
+<p><b>Fecha:</b> 11 / 11 / 2026</p>
+</div>
+</main>
+<script>
+var D=[
+{t:"Inducción matemática",s:"Concepto y aplicación",i:"∑",
+d:"Método de demostración que prueba que una proposición P(n) es verdadera para todos los números naturales n ≥ n₀.",
+c:["Solo se aplica a números naturales (o enteros desde un valor inicial).","Funciona como un dominó: si cae la primera y cada ficha tumba la siguiente, caen todas.","Tiene dos partes obligatorias: caso base y paso inductivo."],
+f:"[P(n₀) ∧ ∀k (P(k) → P(k+1))] ⇒ ∀n ≥ n₀, P(n)",
+et:"Probar que 1 + 3 + 5 + … + (2n − 1) = n²",
+e:["Caso base n = 1: 1 = 1² ✓.","Hipótesis: 1 + 3 + … + (2k − 1) = k².","Sumamos el siguiente impar (2k + 1): k² + 2k + 1.","Pero k² + 2k + 1 = (k + 1)², así que P(k+1) es cierta ✓.","Por inducción, la fórmula vale para todo n ≥ 1."],
+u:"Permite demostrar infinitos casos con solo dos verificaciones; es la herramienta base para validar fórmulas y algoritmos."},
+{t:"Pasos de la inducción",s:"Caso base e inductivo",i:"①②",
+d:"Estructura en dos etapas: verificar el primer valor (caso base) y demostrar que si se cumple para k, se cumple para k + 1 (paso inductivo).",
+c:["Caso base: se comprueba P(n₀) directamente.","Hipótesis inductiva: se supone P(k) verdadera.","Paso inductivo: se demuestra P(k + 1) usando la hipótesis.","Conclusión: P(n) vale para todo n ≥ n₀."],
+f:"1) P(n₀)   2) P(k) ⇒ P(k+1)   ∴ P(n) ∀ n ≥ n₀",
+et:"Probar que 2ⁿ > n para todo n ≥ 1",
+e:["Caso base n = 1: 2¹ = 2 > 1 ✓.","Hipótesis: 2ᵏ > k.","Paso: 2ᵏ⁺¹ = 2 · 2ᵏ > 2k.","Como k ≥ 1, se tiene 2k ≥ k + 1.","Entonces 2ᵏ⁺¹ > k + 1 ✓ y la propiedad se cumple siempre."],
+u:"Seguir los pasos en orden evita errores típicos, como olvidar el caso base o no usar la hipótesis."},
+{t:"Demostraciones por inducción",s:"Ejercicios resueltos",i:"∀",
+d:"Aplicación del principio de inducción para probar sumas, desigualdades y divisibilidad de manera rigurosa.",
+c:["Sumas: n(n+1)/2, n², 2ⁿ − 1…","Desigualdades: 2ⁿ > n, n! > 2ⁿ (n ≥ 4).","Divisibilidad: n³ − n es múltiplo de 3.","Se escribe P(n) con claridad antes de empezar."],
+f:"1 + 2 + … + n = n(n + 1) / 2",
+et:"Ejercicio resuelto: 3 divide a n³ − n, para n ≥ 1",
+e:["Base n = 1: 1³ − 1 = 0, y 3 divide a 0 ✓.","Hipótesis: k³ − k = 3m para algún entero m.","Desarrollamos: (k+1)³ − (k+1) = k³ + 3k² + 3k − k.","Reagrupamos: (k³ − k) + 3(k² + k) = 3m + 3(k² + k).","Factorizamos: 3(m + k² + k) ✓. Queda demostrado."],
+u:"Es la técnica estándar para garantizar que una fórmula general es correcta sin probar caso por caso."},
+{t:"Recursividad",s:"Concepto y funcionamiento",i:"↻",
+d:"Técnica en la que una función o definición se expresa en términos de sí misma, usando entradas cada vez más pequeñas.",
+c:["Caso base: detiene la recursión.","Caso recursivo: reduce el problema a uno más simple.","Cada llamada espera el resultado de la siguiente (pila de llamadas).","Si falta el caso base, nunca termina."],
+f:"f(n) = valor_base si n = n₀;  g( f(n − 1) ) en otro caso",
+et:"Suma recursiva: S(n) = n + S(n − 1), con S(0) = 0. Calcular S(3)",
+e:["S(3) = 3 + S(2).","S(2) = 2 + S(1).","S(1) = 1 + S(0), y S(0) = 0 (caso base).","Regresamos: S(1) = 1, S(2) = 3.","S(3) = 3 + 3 = 6 ✓."],
+u:"Resuelve problemas complejos dividiéndolos en versiones más pequeñas; produce código y definiciones claras y compactas."},
+{t:"Factorial recursivo",s:"Desarrollo numérico",i:"n!",
+d:"El factorial de n es el producto de todos los enteros positivos desde 1 hasta n; se define recursivamente a partir de (n − 1)!.",
+c:["Caso base: 0! = 1.","Caso recursivo: n! = n · (n − 1)!.","Crece muy rápido: 5! = 120, 10! = 3 628 800.","Cuenta las formas de ordenar n objetos."],
+f:"n! = n · (n − 1)!   con   0! = 1",
+et:"Calcular 4!",
+e:["4! = 4 · 3!","3! = 3 · 2!","2! = 2 · 1!","1! = 1 · 0! = 1 · 1 = 1 (caso base alcanzado).","Regreso: 2! = 2 · 1 = 2, 3! = 3 · 2 = 6, 4! = 4 · 6 = 24 ✓."],
+u:"Es el ejemplo clásico para entender la recursividad y se usa en permutaciones, combinaciones y probabilidad."},
+{t:"Sucesión de Fibonacci",s:"Regla y ejemplos",i:"φ",
+d:"Sucesión en la que cada término es la suma de los dos anteriores, comenzando con 0 y 1.",
+c:["Dos casos base: F₀ = 0 y F₁ = 1.","Cada término depende de dos anteriores.","El cociente Fₙ₊₁ / Fₙ se acerca a φ ≈ 1.618 (razón áurea).","Aparece en la naturaleza: espirales, hojas, flores."],
+f:"Fₙ = Fₙ₋₁ + Fₙ₋₂",
+et:"Calcular F₆",
+e:["Partimos de F₀ = 0 y F₁ = 1.","F₂ = 1 + 0 = 1.","F₃ = 1 + 1 = 2 y F₄ = 2 + 1 = 3.","F₅ = 3 + 2 = 5.","F₆ = 5 + 3 = 8 → 0, 1, 1, 2, 3, 5, 8 ✓."],
+u:"Modela crecimiento y patrones naturales, y es un caso típico para analizar la eficiencia de algoritmos recursivos."},
+{t:"Sucesiones recursivas",s:"Términos y patrones",i:"aₙ",
+d:"Sucesiones cuyos términos se obtienen a partir de uno o más términos anteriores mediante una regla y uno o más valores iniciales.",
+c:["Se necesitan valores iniciales y una regla de recurrencia.","Pueden ser aritméticas, geométricas o mixtas.","A veces tienen una fórmula cerrada que se demuestra por inducción.","Se descubren observando el patrón entre términos."],
+f:"a₁ = 3,   aₙ = 2aₙ₋₁ + 1   ⇒   aₙ = 2ⁿ⁺¹ − 1",
+et:"Hallar los primeros términos y el patrón de a₁ = 3, aₙ = 2aₙ₋₁ + 1",
+e:["a₁ = 3 (dato inicial).","a₂ = 2(3) + 1 = 7.","a₃ = 2(7) + 1 = 15 y a₄ = 2(15) + 1 = 31.","Se observa: 3, 7, 15, 31 son 2² − 1, 2³ − 1, 2⁴ − 1, 2⁵ − 1.","Patrón: aₙ = 2ⁿ⁺¹ − 1 (se confirma por inducción) ✓."],
+u:"Permiten describir procesos que evolucionan paso a paso, como intereses, poblaciones o el tiempo de un algoritmo."},
+{t:"Conversión decimal a binario",s:"Procedimiento recursivo",i:"01",
+d:"Para pasar un número decimal a binario se divide entre 2 de forma repetida; los residuos, leídos al revés, forman el número binario.",
+c:["Caso base: si n < 2, el binario es n.","Caso recursivo: bin(n) = bin(n ÷ 2) seguido de (n mod 2).","Los residuos solo pueden ser 0 o 1.","Se leen desde el último residuo hacia el primero."],
+f:"bin(n) = bin(⌊n / 2⌋) · (n mod 2),   bin(n) = n si n < 2",
+et:"Convertir 13 a binario",
+e:["13 ÷ 2 = 6, residuo 1.","6 ÷ 2 = 3, residuo 0.","3 ÷ 2 = 1, residuo 1.","1 < 2: caso base, bin(1) = 1.","Reunimos de abajo hacia arriba: 1 · 1 · 0 · 1 → 13 = 1101₂ ✓."],
+u:"Es la base de cómo las computadoras representan los números y un buen ejemplo de recursión sobre dígitos."},
+{t:"Torres de Hanói",s:"Aplicación de la recursividad",i:"▲",
+d:"Rompecabezas de 3 postes y n discos: hay que mover todos de un poste a otro, de uno en uno, sin poner un disco grande sobre uno pequeño.",
+c:["Se resuelve moviendo n − 1 discos, luego el mayor y otra vez n − 1.","Número mínimo de movimientos: 2ⁿ − 1.","Crece exponencialmente: 10 discos = 1 023 movimientos.","Ejemplo clásico de «divide y vencerás»."],
+f:"T(n) = 2·T(n − 1) + 1,  T(1) = 1  ⇒  T(n) = 2ⁿ − 1",
+et:"Resolver con n = 3 discos (A → C, usando B)",
+e:["Mover 2 discos de A a B (3 movimientos): A→C, A→B, C→B.","Mover el disco grande de A a C (1 movimiento): A→C.","Mover 2 discos de B a C (3 movimientos): B→A, B→C, A→C.","Total: 3 + 1 + 3 = 7 movimientos.","Verificación: 2³ − 1 = 7 ✓."],
+u:"Muestra cómo un problema aparentemente difícil se resuelve con una regla recursiva sencilla."},
+{t:"Inducción y recursividad",s:"Diferencias y relación",i:"⇄",
+d:"La recursividad define o calcula objetos usando casos más pequeños; la inducción demuestra propiedades de esos objetos. Comparten la misma estructura.",
+c:["Diferencia: recursión = construir/calcular; inducción = demostrar.","Relación: caso base ↔ caso base; llamada recursiva ↔ hipótesis inductiva.","La inducción prueba que una definición recursiva es correcta.","Ambas dependen de «n − 1» para llegar a «n»."],
+f:"Recursión: f(n) = g(f(n − 1))     Inducción: P(n − 1) ⇒ P(n)",
+et:"Probar que s(n) = s(n − 1) + n, s(0) = 0, cumple s(n) = n(n + 1)/2",
+e:["Base: s(0) = 0 y 0·1/2 = 0 ✓.","Hipótesis: s(k) = k(k + 1)/2.","Por la definición recursiva: s(k+1) = s(k) + (k + 1).","Sustituimos: k(k+1)/2 + (k+1) = (k+1)(k+2)/2 ✓.","La definición recursiva produce exactamente la fórmula cerrada."],
+u:"Juntas forman un par esencial: la recursión crea soluciones y la inducción garantiza que son correctas."}
+];
+var S='stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"',T='font-family="Georgia,serif" text-anchor="middle"';
+var I=[
+'<g fill="var(--cream)" '+S+'><rect x="10" y="38" width="10" height="38" rx="2"/><rect x="30" y="38" width="10" height="38" rx="2"/><rect x="50" y="38" width="10" height="38" rx="2" transform="rotate(14 55 76)"/><rect x="68" y="48" width="10" height="38" rx="2" transform="rotate(42 73 86)"/></g><path d="M6 80H94" fill="none" '+S+'/><text x="50" y="22" '+T+' font-size="12" fill="var(--blue)">P(k)⇒P(k+1)</text>',
+'<path d="M10 84H30V66H48V48H66V30H90V84Z" fill="var(--cream)" '+S+'/><text x="20" y="79" '+T+' font-size="10" fill="var(--ink)">n₀</text><text x="78" y="24" '+T+' font-size="11" fill="var(--green)">k+1</text><path d="M52 44Q62 28 74 30" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"/>',
+'<rect x="8" y="14" width="84" height="56" rx="4" fill="var(--cream)" '+S+'/><text x="50" y="38" '+T+' font-size="15" fill="var(--ink)">∀n, P(n)</text><path d="M34 54L42 62L62 44" fill="none" stroke="var(--blue)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 80H86" '+S+'/><text x="50" y="94" '+T+' font-size="10" fill="var(--mute)">Q.E.D. ∎</text>',
+'<rect x="8" y="10" width="84" height="84" fill="var(--cream)" '+S+'/><rect x="22" y="24" width="56" height="56" fill="var(--paper)" '+S+'/><rect x="34" y="36" width="32" height="32" fill="var(--cream)" '+S+'/><rect x="43" y="45" width="14" height="14" fill="var(--brick)" '+S+'/>',
+'<path d="M30 36L50 52L70 66L84 78" fill="none" '+S+'/><g '+S+'><circle cx="22" cy="30" r="15" fill="var(--cream)"/><circle cx="50" cy="52" r="11" fill="var(--cream)"/><circle cx="72" cy="66" r="9" fill="var(--cream)"/><circle cx="86" cy="80" r="6" fill="var(--green)"/></g><g '+T+' fill="var(--ink)" font-size="13"><text x="22" y="35">4</text><text x="50" y="57">3</text><text x="72" y="70" font-size="11">2</text></g><text x="18" y="92" font-size="16" font-weight="700" font-family="Georgia,serif" fill="var(--green)">n!</text>',
+'<g fill="var(--cream)" '+S+'><rect x="10" y="10" width="50" height="50"/><rect x="60" y="10" width="30" height="30"/><rect x="70" y="40" width="20" height="20"/><rect x="60" y="40" width="10" height="10"/><rect x="60" y="50" width="10" height="10"/></g><path d="M10 60A50 50 0 0 0 60 10A30 30 0 0 1 90 40A20 20 0 0 1 70 60A10 10 0 0 1 60 50" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round"/><text x="50" y="84" '+T+' font-size="11" fill="var(--mute)">φ ≈ 1.618</text>',
+'<g fill="var(--cream)" '+S+'><rect x="12" y="72" width="16" height="10"/><rect x="32" y="64" width="16" height="18"/><rect x="52" y="48" width="16" height="34"/><rect x="72" y="18" width="16" height="64"/></g><path d="M6 86H94" fill="none" '+S+'/><g '+T+' font-size="9" fill="var(--brick)"><text x="20" y="68">3</text><text x="40" y="60">7</text><text x="60" y="44">15</text><text x="80" y="14">31</text></g>',
+'<g fill="var(--cream)" '+S+'><rect x="8" y="34" width="20" height="28"/><rect x="30" y="34" width="20" height="28"/><rect x="52" y="34" width="20" height="28"/><rect x="74" y="34" width="20" height="28"/></g><g '+T+' font-size="17" fill="var(--ink)"><text x="18" y="55">1</text><text x="40" y="55">1</text><text x="62" y="55">0</text><text x="84" y="55">1</text></g><g '+T+' font-size="8" fill="var(--mute)"><text x="18" y="76">8</text><text x="40" y="76">4</text><text x="62" y="76">2</text><text x="84" y="76">1</text></g><text x="50" y="22" '+T+' font-size="12" fill="var(--green)">13 = 1101₂</text>',
+'<rect x="6" y="80" width="88" height="7" fill="var(--cream)" '+S+'/><g '+S+'><path d="M22 30V80M50 30V80M78 30V80" fill="none"/><rect x="5" y="68" width="34" height="9" fill="var(--brick)"/><rect x="10" y="58" width="24" height="9" fill="var(--mid)"/><rect x="15" y="48" width="14" height="9" fill="var(--cream)"/></g>',
+'<path d="M12 34H80M70 24L82 34L70 44" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M88 66H20M30 56L18 66L30 76" fill="none" stroke="var(--mute)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="50" y="22" '+T+' font-size="12" fill="var(--ink)">P(n−1)⇒P(n)</text><text x="50" y="92" '+T+' font-size="12" fill="var(--ink)">f(n)=g(f(n−1))</text>'
+];
+var g=document.getElementById("g"),li=function(a){return a.map(function(v){return "<li>"+v+"</li>"}).join("")};
+D.forEach(function(x,k){
+g.insertAdjacentHTML("beforeend",'<section><div class="top'+(k%2?' r':'')+'"><div class="tx"><h2><span class="n">'+("0"+(k+1)).slice(-2)+'</span> '+x.t+'</h2><span class="sb">'+x.s+'</span><span class="lb d">Definición</span><p>'+x.d+'</p><span class="lb c">Características principales</span><ul>'+li(x.c)+'</ul></div><div class="il"><svg viewBox="0 0 100 100" role="img" aria-label="'+x.t+'">'+I[k]+'</svg></div></div><span class="lb f">Fórmula o regla</span><div class="fm">'+x.f+'</div><span class="lb e">Ejemplo paso a paso</span><div class="ex"><b>'+x.et+'</b><ol>'+li(x.e)+'</ol></div><p class="cn"><b>Conclusión:</b> '+x.u+'</p></section>');
+});
+</script>
+</body>
+</html>
